@@ -23,7 +23,8 @@ DB_PASSWORD=aminudeen
 DB_HOST=db
 DB_PORT=5432
 
-REDIS_URL=redis://redis:6379
+SECRET_KEY = ''
+
 
 3. Build and Run the Docker Containers
 Use Docker Compose to build and start the services.
