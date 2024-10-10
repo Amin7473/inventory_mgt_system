@@ -1,0 +1,1090 @@
+{
+	"info": {
+		"_postman_id": "f8c2d2bf-74b9-431b-b833-ed43cdf8516f",
+		"name": "Inventory Management APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23462003"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"mark@gmail.com\",\r\n    \"password\" : \"Abcd.1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}accounts/api/authentication/v1/user-login-api/",
+							"host": [
+								"{{host}}accounts"
+							],
+							"path": [
+								"api",
+								"authentication",
+								"v1",
+								"user-login-api",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Error - Invalid creds",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"user1@gmail.com\",\r\n    \"password\" : \"kxbdbvxcv\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}accounts/api/authentication/v1/user-login-api/",
+									"host": [
+										"{{host}}accounts"
+									],
+									"path": [
+										"api",
+										"authentication",
+										"v1",
+										"user-login-api",
+										""
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 21 Sep 2024 20:57:14 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.10.15"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "WWW-Authenticate",
+									"value": "Bearer realm=\"api\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "63"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"detail\": \"No active account found with the given credentials\"\n}"
+						},
+						{
+							"name": "Error - Rate limit exceeded",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"user1@gmail.com\",\r\n    \"password\" : \"Amin@0108\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}accounts/api/authentication/v1/user-login-api/",
+									"host": [
+										"{{host}}accounts"
+									],
+									"path": [
+										"api",
+										"authentication",
+										"v1",
+										"user-login-api",
+										""
+									]
+								}
+							},
+							"status": "Too Many Requests",
+							"code": 429,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 21 Sep 2024 20:57:53 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.10.15"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Retry-After",
+									"value": "8"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "68"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"detail\": \"Request was throttled. Expected available in 8 seconds.\"\n}"
+						},
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"user1@gmail.com\",\r\n    \"password\" : \"Amin@0108\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}accounts/api/authentication/v1/user-login-api/",
+									"host": [
+										"{{host}}accounts"
+									],
+									"path": [
+										"api",
+										"authentication",
+										"v1",
+										"user-login-api",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 21 Sep 2024 20:58:25 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.10.15"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "582"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"refresh\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcyNzAzODcwNSwiaWF0IjoxNzI2OTUyMzA1LCJqdGkiOiI4NDI0ZTc2NDE2ODE0MTQ4ODMwZDM2NDE3MzA2NjQwMyIsInVzZXJfaWQiOiJkMTk0YzFjMi03ODViLTExZWYtYmYxNi0wMjQyYWMxZDAwMDQifQ.lC6PhLRAJuTu4RgQKdePkvEwb64m4-Q0yTJuUGwOWGM\",\n    \"access\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI2OTUzMjA1LCJpYXQiOjE3MjY5NTIzMDUsImp0aSI6ImIyNjlhNTA0NzhlYTQ4M2JhY2YzNTBlMzQwMGYxNjQ4IiwidXNlcl9pZCI6ImQxOTRjMWMyLTc4NWItMTFlZi1iZjE2LTAyNDJhYzFkMDAwNCJ9.Gw5wWvRaaZD79MQRnR-63plKBWA8DTmFCkPa64m-2Xk\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Token Refresh",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refresh\" : \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcyODY3MjQyNSwiaWF0IjoxNzI4NTg2MDI1LCJqdGkiOiIwZmY0NTc3OTJlYTM0ZDQ0YjU0MDY2MzQzN2Y4N2QzOSIsInVzZXJfaWQiOiJhNDEyYTk1ZS04NzM3LTExZWYtODhlMy0wMjQyYWMxMzAwMDQifQ.oNWcDQKPKyq4qLFAgqtXPXoWeyKZA3rBISZHo8WANY4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}accounts/api/authentication/v1/user-token-refresh-api/",
+							"host": [
+								"{{host}}accounts"
+							],
+							"path": [
+								"api",
+								"authentication",
+								"v1",
+								"user-token-refresh-api",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"refresh\" : \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcyNzAzOTAwMSwiaWF0IjoxNzI2OTUyNjAxLCJqdGkiOiI3MTYxYWY0ZjhkZmY0ZjYyODhmMjhhYWU3YjRiODViNCIsInVzZXJfaWQiOiJkMTk0YzFjMi03ODViLTExZWYtYmYxNi0wMjQyYWMxZDAwMDQifQ.aoY2gWrkYCZ7dKvKT1GoiaKWSxG9ECalwHkgws3ALRY\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}accounts/api/authentication/v1/user-token-refresh-api/",
+									"host": [
+										"{{host}}accounts"
+									],
+									"path": [
+										"api",
+										"authentication",
+										"v1",
+										"user-token-refresh-api",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 21 Sep 2024 21:04:29 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.10.15"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "582"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI2OTUzNTY5LCJpYXQiOjE3MjY5NTI2MDEsImp0aSI6ImRkNDYwMzZlNGQ2ZDQzMTE5ZTEzZWE3MzJmM2E2ZmJmIiwidXNlcl9pZCI6ImQxOTRjMWMyLTc4NWItMTFlZi1iZjE2LTAyNDJhYzFkMDAwNCJ9.T_x1nYi6cD383EPshAWlZz2cnHU5A5if6JYUokNUYDY\",\n    \"refresh\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcyNzAzOTA2OSwiaWF0IjoxNzI2OTUyNjY5LCJqdGkiOiIyZWU2ZWIwNTE2MmE0ZmQ1YmNiMDg2ZjFhY2UxMjY3YiIsInVzZXJfaWQiOiJkMTk0YzFjMi03ODViLTExZWYtYmYxNi0wMjQyYWMxZDAwMDQifQ.J_YJoMPzk0mKxGrvRCbIGaYQfd8voYHbdK4JQP9crtk\"\n}"
+						}
+					]
+				},
+				{
+					"name": "User Registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"mark@gmail.com\",\r\n    \"username\" : \"Mark Zo\",\r\n    \"role\" : \"ADMIN\",         // role enums : READ, WRITE, ADMIN\r\n    \"password\" : \"Abcd.1234\",\r\n    \"confirm_password\" : \"Abcd.1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}accounts/api/authentication/v1/user-registration-api/",
+							"host": [
+								"{{host}}accounts"
+							],
+							"path": [
+								"api",
+								"authentication",
+								"v1",
+								"user-registration-api",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"user1@gmail.com\",\r\n    \"password\" : \"Amin@0108\",\r\n    \"confirm_password\" : \"Amin@0108\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}accounts/api/authentication/v1/user-registration-api/",
+									"host": [
+										"{{host}}accounts"
+									],
+									"path": [
+										"api",
+										"authentication",
+										"v1",
+										"user-registration-api",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 21 Sep 2024 20:55:22 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.10.15"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "39"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User created successfully\"\n}"
+						},
+						{
+							"name": "Error - email exists",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"user1@gmail.com\",\r\n    \"password\" : \"Amin@01088\",\r\n    \"confirm_password\" : \"Amin@0108\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}accounts/api/authentication/v1/user-registration-api/",
+									"host": [
+										"{{host}}accounts"
+									],
+									"path": [
+										"api",
+										"authentication",
+										"v1",
+										"user-registration-api",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 21 Sep 2024 20:55:43 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.10.15"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "68"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": {\n        \"email\": [\n            \"user model with this email already exists.\"\n        ]\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Inventory",
+			"item": [
+				{
+					"name": "Get Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI4NTg5MDIwLCJpYXQiOjE3Mjg1ODgxMjAsImp0aSI6IjYzZmQxNDQzZTcyZjQxOTY4ZDliY2EwNGU3Mzg1Yzg1IiwidXNlcl9pZCI6ImE0MTJhOTVlLTg3MzctMTFlZi04OGUzLTAyNDJhYzEzMDAwNCJ9.8D3NBwhxyrykjnHlUPIsSrVWEW1IyFa_sFtKVfvy6wY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}accounts/api/inventory/v1/get-item/f1bc8b2a-873c-11ef-b31c-0242ac130004/",
+							"host": [
+								"{{host}}accounts"
+							],
+							"path": [
+								"api",
+								"inventory",
+								"v1",
+								"get-item",
+								"f1bc8b2a-873c-11ef-b31c-0242ac130004",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}accounts/api/inventory/v1/items/6b6b1f36-8738-11ef-a1ae-0242ac130004/",
+									"host": [
+										"{{host}}accounts"
+									],
+									"path": [
+										"api",
+										"inventory",
+										"v1",
+										"items",
+										"6b6b1f36-8738-11ef-a1ae-0242ac130004",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 10 Oct 2024 18:51:16 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.10.15"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "92"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"6b6b1f36-8738-11ef-a1ae-0242ac130004\",\n    \"name\": \"Lays Chips\",\n    \"description\": \"500g Chips\"\n}"
+						},
+						{
+							"name": "Not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}accounts/api/inventory/v1/get-item/6b6b1f36-8738-11ef-a1ae-0242ac130004/",
+									"host": [
+										"{{host}}accounts"
+									],
+									"path": [
+										"api",
+										"inventory",
+										"v1",
+										"get-item",
+										"6b6b1f36-8738-11ef-a1ae-0242ac130004",
+										""
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 10 Oct 2024 19:01:35 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.10.15"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "28"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Item not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create New item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI4NTg5MDIwLCJpYXQiOjE3Mjg1ODgxMjAsImp0aSI6IjYzZmQxNDQzZTcyZjQxOTY4ZDliY2EwNGU3Mzg1Yzg1IiwidXNlcl9pZCI6ImE0MTJhOTVlLTg3MzctMTFlZi04OGUzLTAyNDJhYzEzMDAwNCJ9.8D3NBwhxyrykjnHlUPIsSrVWEW1IyFa_sFtKVfvy6wY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Dorito Chips\",\r\n    \"description\" : \"500g Chips\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}accounts/api/inventory/v1/create-item/",
+							"host": [
+								"{{host}}accounts"
+							],
+							"path": [
+								"api",
+								"inventory",
+								"v1",
+								"create-item",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"Lays Chips\",\r\n    \"description\" : \"500g Chips\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}accounts/api/inventory/v1/items/",
+									"host": [
+										"{{host}}accounts"
+									],
+									"path": [
+										"api",
+										"inventory",
+										"v1",
+										"items",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 10 Oct 2024 18:49:46 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.10.15"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "92"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"6b6b1f36-8738-11ef-a1ae-0242ac130004\",\n    \"name\": \"Lays Chips\",\n    \"description\": \"500g Chips\"\n}"
+						},
+						{
+							"name": "Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"Lays Chips\",\r\n    \"description\" : \"500g Chips\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}accounts/api/inventory/v1/create-item/",
+									"host": [
+										"{{host}}accounts"
+									],
+									"path": [
+										"api",
+										"inventory",
+										"v1",
+										"create-item",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 10 Oct 2024 18:54:12 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.10.15"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "32"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Item already exists.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI4NTg5MDIwLCJpYXQiOjE3Mjg1ODgxMjAsImp0aSI6IjYzZmQxNDQzZTcyZjQxOTY4ZDliY2EwNGU3Mzg1Yzg1IiwidXNlcl9pZCI6ImE0MTJhOTVlLTg3MzctMTFlZi04OGUzLTAyNDJhYzEzMDAwNCJ9.8D3NBwhxyrykjnHlUPIsSrVWEW1IyFa_sFtKVfvy6wY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Lenz juice\",\r\n    \"description\" : \"5L\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}accounts/api/inventory/v1/update-item/f1bc8b2a-873c-11ef-b31c-0242ac130004/",
+							"host": [
+								"{{host}}accounts"
+							],
+							"path": [
+								"api",
+								"inventory",
+								"v1",
+								"update-item",
+								"f1bc8b2a-873c-11ef-b31c-0242ac130004",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\" : \"Chays Lips\",\r\n    \"description\" : \"50000g Chips\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}accounts/api/inventory/v1/update-item/6b6b1f36-8738-11ef-a1ae-0242ac130004/",
+									"host": [
+										"{{host}}accounts"
+									],
+									"path": [
+										"api",
+										"inventory",
+										"v1",
+										"update-item",
+										"6b6b1f36-8738-11ef-a1ae-0242ac130004",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 10 Oct 2024 18:54:59 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.10.15"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, origin"
+								},
+								{
+									"key": "Allow",
+									"value": "PUT, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "94"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"6b6b1f36-8738-11ef-a1ae-0242ac130004\",\n    \"name\": \"Chays Lips\",\n    \"description\": \"50000g Chips\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI4NTg5MDIwLCJpYXQiOjE3Mjg1ODgxMjAsImp0aSI6IjYzZmQxNDQzZTcyZjQxOTY4ZDliY2EwNGU3Mzg1Yzg1IiwidXNlcl9pZCI6ImE0MTJhOTVlLTg3MzctMTFlZi04OGUzLTAyNDJhYzEzMDAwNCJ9.8D3NBwhxyrykjnHlUPIsSrVWEW1IyFa_sFtKVfvy6wY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}accounts/api/inventory/v1/delete-item/f1bc8b2a-873c-11ef-b31c-0242ac130004/",
+							"host": [
+								"{{host}}accounts"
+							],
+							"path": [
+								"api",
+								"inventory",
+								"v1",
+								"delete-item",
+								"f1bc8b2a-873c-11ef-b31c-0242ac130004",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
