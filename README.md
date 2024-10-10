@@ -11,7 +11,7 @@ Ensure you have the following installed:
 
 1. Clone the repository
 
-git clone https://github.com/Amin7473/social_network_app.git
+git clone https://github.com/Amin7473/inventory_mgt_system.git
 cd social_network_app
 
 2. Setup .env File
